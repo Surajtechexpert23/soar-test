@@ -81,4 +81,4 @@ You can now use the admin dashboard. Explore the various features such as form h
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework for creating custom designs.
 - [React Multi Carousel](https://github.com/Xolvio/react-multi-carousel) - Responsive carousel component for React.
 - [React Toastify](https://fkhadra.github.io/react-toastify/) - Elegant, customizable toast notifications for React.
--[Json.server](https://www.npmjs.com/package/json-server) - create the dummy api's.
+- [Json.server](https://www.npmjs.com/package/json-server) - create the dummy api's.
