@@ -1,6 +1,6 @@
 import React from "react";
-import { FcSimCardChip } from "react-icons/fc";
-import { RiMastercardFill } from "react-icons/ri";
+import simchip from "../assets/Chip_Card.svg";
+import simchipdark from "../assets/Chip_Card_dark.svg";
 
 const CreditCard = ({
   balance,
@@ -11,40 +11,82 @@ const CreditCard = ({
 }) => {
   return (
     <div
-      className={`rounded-2xl shadow-sm ${
-        isBlack ? "bg-black text-white" : "bg-white text-black border"
+      className={`rounded-3xl shadow-sm ${
+        isBlack ? "text-white" : "bg-white text-black border border-[#DFEAF2]"
       }`}
+      style={{
+        background: isBlack
+          ? "linear-gradient(107.38deg, #5B5A6F 2.61%, #000000 101.2%)"
+          : "bg-white text-black border",
+      }}
     >
       <div className="p-8">
         <div className="mt-2 flex justify-between items-center">
           <div className="flex flex-col">
-            <p className="text-[11px]">Balance</p>
-            <p>{balance}</p>
+            <p className={`text-sm ${!isBlack && "text-[#718EBF]"}`}>Balance</p>
+            <p className="text-lg">{balance}</p>
           </div>
-          <FcSimCardChip className="text-5xl" />
+          <img
+            src={isBlack ? simchip : simchipdark}
+            alt="Credit Card"
+            className="w-12"
+          />
         </div>
 
-        <div className="mt-5 grid grid-cols-2 flex flex-col">
+        <div className="mt-5 grid grid-cols-2">
           <div>
-            <p className="uppercase text-[11px]">Card Holder</p>
-            <p>{cardHolder}</p>
+            <p
+              className={`uppercase text-sm ${
+                isBlack ? "text-[#FFFFFFB2]" : "text-[#718EBF]"
+              }`}
+            >
+              Card Holder
+            </p>
+            <p className="text-lg">{cardHolder}</p>
           </div>
           <div>
-            <p className="uppercase text-[11px]">Valid Thru</p>
-            <p>{validThru}</p>
+            <p
+              className={`uppercase text-sm ${
+                isBlack ? "text-[#FFFFFFB2]" : "text-[#718EBF]"
+              }`}
+            >
+              Valid Thru
+            </p>
+            <p className="text-lg">{validThru}</p>
           </div>
         </div>
       </div>
 
       <div
-        className={` flex justify-between items-center ${
-          isBlack ? "bg-gray-700" : "border-t"
-        } p-5 px-8 rounded-b-xl`}
+        className={` flex justify-between items-center p-5 px-8 rounded-b-xl gap-4 ${
+          !isBlack && "border-t  border-[#DFEAF2]"
+        }`}
+        style={{
+          background:
+            isBlack &&
+            "linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%)",
+        }}
       >
-        <p className="text-sm ">{cardNumber}</p>
-        <RiMastercardFill className="text-5xl" />
+        <p className="text-xl">{cardNumber}</p>
+        <div className="relative">
+          <div
+            className="rounded-full h-10 w-10 absolute right-5 "
+            style={{
+              background: isBlack
+                ? " rgba(255, 255, 255, 0.5)"
+                : "rgba(145, 153, 175, 0.5)",
+            }}
+          ></div>
+          <div
+            className="rounded-full h-10 w-10  "
+            style={{
+              background: isBlack
+                ? " rgba(255, 255, 255, 0.5)"
+                : "rgba(145, 153, 175, 0.5)",
+            }}
+          ></div>
+        </div>
       </div>
-
     </div>
   );
 };

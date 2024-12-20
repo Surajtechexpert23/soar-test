@@ -21,70 +21,80 @@ ChartJS.register(
 
 const WeeklyActivityChart = () => {
   const data = {
-    labels: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"], 
+    labels: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"],
     datasets: [
       {
-        label: "Withdraw",
-        data: [300, 250, 300, 450, 215, 320, 420], 
-        backgroundColor: "rgba(0, 0, 0, 0.7)",  
-        borderColor: "rgba(0, 0, 0, 1)",
+        label: "Deposit",
+        data: [205, 110, 400, 150, 315, 175, 300],
+        backgroundColor: "rgba(57, 106, 255, 1)",
         borderWidth: 1,
         borderRadius: Number.MAX_VALUE,
         borderSkipped: false,
+        barPercentage: 0.5,
       },
       {
-        label: "Deposit",
-        data: [205, 110, 400, 150, 315, 175, 300],  
-        backgroundColor: "rgba(59, 130, 246, 0.7)", 
-        borderColor: "rgba(59, 130, 246, 1)",
+        label: "Withdraw",
+        data: [300, 250, 300, 450, 215, 320, 420],
+        backgroundColor: "rgba(35, 35, 35, 1)",
         borderWidth: 1,
         borderRadius: Number.MAX_VALUE,
         borderSkipped: false,
+        barPercentage: 0.5,
       },
     ],
   };
 
   const options = {
     responsive: true,
-    maintainAspectRatio: false, 
+    maintainAspectRatio: false,
     scales: {
       x: {
         grid: {
-          display: false, 
+          display: false,
         },
         ticks: {
           font: {
-            size: 12, 
+            size: 18,
           },
+          color: " #718EBF",
         },
-        barPercentage: 0.2, 
-        categoryPercentage: 0.1,
+        border: {
+          display: false,
+        },
+        categoryPercentage: 1, 
       },
       y: {
         beginAtZero: true,
         grid: {
-          drawBorder: false, 
+          drawBorder: false,
         },
         ticks: {
           font: {
-            size: 12, 
+            size: 18,
           },
+          color: " #718EBF",
+          stepSize: 100,
+        },
+        border: {
+          display: false,
         },
       },
     },
     plugins: {
       legend: {
         position: "top",
-        align: "end", 
+        align: "end",
         labels: {
-          usePointStyle: true, 
+          usePointStyle: true,
           font: {
-            size: 12, 
+            size: 18,
           },
+          color: "#718EBF",
+          textAlign: "center",
         },
       },
       datalabels: {
-        display: false, 
+        display: false,
       },
     },
     layout: {
@@ -98,7 +108,9 @@ const WeeklyActivityChart = () => {
   };
 
   return (
-    <div className="relative w-full h-72 md:h-full"> {/* Responsive height with Tailwind */}
+    <div className="relative w-full h-72 md:h-full">
+      {" "}
+      {/* Responsive height with Tailwind */}
       <Bar data={data} options={options} />
     </div>
   );

@@ -4,31 +4,18 @@ import { useForm } from "react-hook-form";
 import TextInput from "@/common/TextInput";
 import ToastNotifications from "@/common/ToastNotifications";
 
-import useToast from "@/hooks/useToast";
-
 const UserProfileForm = () => {
-
-  const { showToast } = useToast();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const [formData,setFormData]=useState({})
-
+  const [formData, setFormData] = useState({});
   const onSubmit = (data) => {
-    const fetchData = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const success = true;
-        success
-          ? resolve("Data fetched successfully!")
-          : reject("Failed to fetch data.");
-      }, 2000);
-    });
-
-    showToast(fetchData); 
-    setFormData(data)    
+    toast.success("Data submitted successfully");
+    console.log("data", data);
+    reset();
   };
 
   return (
@@ -37,15 +24,16 @@ const UserProfileForm = () => {
         <div className="grid md:grid-cols-3 gap-6">
           {/* Avatar Column */}
           <div className="flex flex-col justify-start items-center  ">
-      
             <div className="w-32 h-32 rounded-full bg-gray-200 flex items-center justify-center">
               <img
-                src="https://i.pravatar.cc/150?u=5" 
+                src="https://i.pravatar.cc/150?u=5"
                 alt="Avatar"
                 className="w-full h-full rounded-full object-cover"
               />
             </div>
-            <h2 className="font-bold mt-5 text-center">{formData?.name ? formData?.name : "Guest"}</h2>
+            <h2 className="font-bold mt-5 text-center">
+              {formData?.name ? formData?.name : "Guest"}
+            </h2>
           </div>
 
           {/* Form Columns */}

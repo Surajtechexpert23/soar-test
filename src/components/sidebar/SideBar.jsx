@@ -47,7 +47,7 @@ const SideBar = ({ isOpen, onToggle }) => {
       <div className="flex items-center w-full justify-center mt-8">
         <img src={Logo} alt="logo" className="mx-8 md:w-48 sm:w-32 " />
         <button
-          class="cursor-pointer duration-200 hover:scale-125 active:scale-100 bg-white rounded-full border shadow-md mr-5 lg:hidden"
+          className="cursor-pointer duration-200 hover:scale-125 active:scale-100 bg-white rounded-full border shadow-md mr-5 lg:hidden"
           onClick={onToggle}
         >
           <svg
