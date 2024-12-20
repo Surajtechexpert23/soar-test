@@ -15,12 +15,13 @@ const TransactionItem = ({ title, date, amount, amountType, type }) => {
     paypal: "#E7EDFF",
   };
   const transactionType = icons[type];
-  const iconBG = iconback[type];
+  const iconbg = iconback[type];
 
   return (
     <div className="flex gap-1 items-center relative">
       <div
-        className={`flex justify-center items-center bg-[${iconBG}] w-14 h-14 rounded-full transition duration-600`}
+        style={{ backgroundColor: iconbg }}
+        className={`flex justify-center items-center w-14 h-14 rounded-full transition duration-600`}
       >
         <img src={transactionType} alt={type} className="text-3xl" />
       </div>
