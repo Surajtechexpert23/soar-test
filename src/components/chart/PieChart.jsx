@@ -24,12 +24,18 @@ const PieChart = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  const[fetchdata,setFetchdata]=useState([])
+  useEffect(()=>{
+    fetch("http://localhost:3008/Expense").then((res)=>res.json()).then((data)=>setFetchdata(data))
+  },[])
+  const name = fetchdata.map((item) => item.name);
+  const value = fetchdata.map((item) => parseFloat(item.value.replace("%", "")));
 
   const data = {
-    labels: ['20% Investment', '30% Entertainment', '15% Bill Expense', '35% Others'],
+    labels: name,
     datasets: [
       {
-        data: [20, 30, 15, 35],
+        data: value,
         backgroundColor: ['blue', 'gray', 'orange', 'black'],
         borderColor: ['blue', 'gray', 'orange', 'black'],
         borderWidth: 1,
