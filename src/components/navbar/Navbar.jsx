@@ -16,7 +16,7 @@ const NavBar = ({ onToggle }) => {
   }, [location.pathname]);
 
   return (
-    <nav className="shadow-md border-b-2 border-slate-200  px-6 z-10  ">
+    <nav className="md:shadow-md md:border-b-2 border-slate-200  px-6 z-10  ">
       <div className="h-24 flex items-center justify-between">
         <button onClick={onToggle} className="text-2xl lg:hidden">
           <HiMenu fill="#343C6A" />
@@ -70,11 +70,11 @@ const NavBar = ({ onToggle }) => {
       </div>
       <label className="relative block md:hidden">
         <span className="sr-only">Search</span>
-        <span className="absolute left-5 inset-y-0 flex items-center pl-2 text-gray-500 text-xl">
+        <span className="absolute left-2 inset-y-0 flex items-center pl-2 text-gray-500 text-xl">
           <HiSearch fill="#8BA3CB" />
         </span>
         <input
-          className="py-3 m-2 rounded-full disable bg-gray-100 placeholder:text-[#8BA3CB]  block w-full pl-12 pr-3"
+          className="py-3 my-2 rounded-full disable bg-gray-100 placeholder:text-[#8BA3CB]  block w-full pl-12 pr-3"
           placeholder="Search for something"
           type="text"
           name="search"
