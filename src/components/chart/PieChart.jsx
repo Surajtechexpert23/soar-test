@@ -26,7 +26,7 @@ const PieChart = () => {
   }, []);
   const[fetchdata,setFetchdata]=useState([])
   useEffect(()=>{
-    fetch("http://localhost:3008/Expense").then((res)=>res.json()).then((data)=>setFetchdata(data))
+    fetch("http://localhost:2005/expense").then((res)=>res.json()).then((data)=>setFetchdata(data))
   },[])
   const name = fetchdata.map((item) => item.name);
   const value = fetchdata.map((item) => parseFloat(item.value.replace("%", "")));

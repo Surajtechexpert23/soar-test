@@ -22,7 +22,7 @@ ChartJS.register(
 const WeeklyActivityChart = () => {
   const[fetchdata,setFetchdata]=useState([])
   useEffect(()=>{
-    fetch("http://localhost:3008/activity").then((res)=>res.json()).then((data)=>setFetchdata(data))
+    fetch("http://localhost:2005/activity").then((res)=>res.json()).then((data)=>setFetchdata(data))
   },[])
   const labels = fetchdata.map((item) => item.day);
   const depositData = fetchdata.map((item) => item.deposit);
