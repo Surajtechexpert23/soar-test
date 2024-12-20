@@ -1,6 +1,6 @@
 # Admin Dashboard
  
-This project is an Admin Dashboard built with Vite and React. It utilizes React Hook Form for form validation, React Icons for icons, Chart.js for graphing, Tailwind CSS for styling, React Multi Carousel for the slider, and React Toastify for message alerts.
+This project is an Admin Dashboard built with Vite and React. It utilizes React Hook Form for form validation, React Icons for icons, Chart.js for graphing, Tailwind CSS for styling, React Multi Carousel for the slider, Json.server for create a dummy API, Redux toolkit for State management and React Toastify for message alerts.
  
 ## Features
  
