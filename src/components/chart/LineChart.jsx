@@ -43,7 +43,7 @@ const LineChart = () => {
         data: income,
         borderColor: "rgba(24, 20, 243, 1)",
         borderWidth: 3,
-        pointRadius: 0,
+        pointRadius: 2,
         tension: 0.4,
         fill: true,
         backgroundColor: (context) => {
@@ -113,6 +113,15 @@ const LineChart = () => {
       },
       datalabels: {
         display: false,
+      },
+      tooltip: {
+        enabled: true,
+        callbacks: {
+          label: function (context) {
+            const value = context.raw;
+            return `Income: ${value}`;
+          },
+        },
       },
     },
   };
