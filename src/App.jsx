@@ -31,7 +31,7 @@ const App = () => {
           }`}
         >
           <NavBar onToggle={toggleSidebar} />
-          <main className="    h-[calc(100vh-100px)] overflow-y-auto bg-[#F5F7FA]">
+          <main className="h-[calc(100vh-100px)] overflow-y-auto md:bg-[#F5F7FA] bg-[#FFFFFF]">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />

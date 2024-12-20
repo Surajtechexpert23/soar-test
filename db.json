@@ -110,14 +110,14 @@
   "transaction": [
     {
       "type": "card",
-      "label": "Deposite from my card",
+      "label": "Deposit from my card",
       "value": "850",
       "amountType": "negative",
       "date": "28 January 2021"
     },
     {
       "type": "paypal",
-      "label": "Deposite paypal",
+      "label": "Deposit paypal",
       "value": "2500",
       "amountType": "possitive",
       "date": "25 January 2021"

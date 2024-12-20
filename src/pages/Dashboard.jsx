@@ -12,6 +12,7 @@ import BarChart from "@/components/chart/BarChart";
 import PieChart from "@/components/chart/PieChart";
 import LineChart from "@/components/chart/LineChart";
 import { toast } from "react-toastify";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 
 const Dashboard = () => {
   const responsive = {
@@ -50,7 +51,27 @@ const Dashboard = () => {
   const handleInputChange = (e) => {
     setAmount(e.target.value);
   };
+  const CustomLeftArrow = ({ onClick }) => {
+    return (
+      <button
+        onClick={onClick}
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-200 cursor-pointer duration-200 hover:scale-125  border"
+      >
+        <RiArrowLeftSLine color="#718EBF" size={25} />
+      </button>
+    );
+  };
 
+  const CustomRightArrow = ({ onClick }) => {
+    return (
+      <button
+        onClick={onClick}
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-200 cursor-pointer duration-200 hover:scale-125  border"
+      >
+        <RiArrowRightSLine color="#718EBF" size={25} />
+      </button>
+    );
+  };
   const handleSubmit = () => {
     toast.success("Amount Transferred successfully!");
   };
@@ -92,7 +113,7 @@ const Dashboard = () => {
             Recent Transaction
           </h2>
           <div
-            className="rounded-3xl md:p-8 p-4 bg-white shadow-sm mt-5 space-y-10 md:space-y-5 border h-[271px] overflow-y-scroll"
+            className="rounded-3xl md:p-8 p-4 bg-white md:shadow-sm mt-5 space-y-10 md:space-y-5 md:border h-[271px] overflow-y-scroll"
             id="style-1"
           >
             {transactionData.map((item, i) => (
@@ -116,7 +137,7 @@ const Dashboard = () => {
             <h2 className="text-xl font-medium mt-5 md:mt-0">
               Weekly Activity
             </h2>
-            <div className="bg-white shadow-sm px-4 py-2 border rounded-3xl mt-5 min-h-[284px] lg:h-[500px] w-full ">
+            <div className="bg-white md:shadow-sm px-4 py-2 md:border rounded-3xl mt-5 min-h-[284px] lg:h-[500px] w-full ">
               <BarChart />
             </div>
           </div>
@@ -127,7 +148,7 @@ const Dashboard = () => {
           <h2 className="text-xl font-medium mt-5 md:mt-0">
             Expense Statistics
           </h2>
-          <div className="bg-white shadow-sm p-5 border rounded-2xl mt-5 lg:h-[500px] flex justify-center items-center">
+          <div className="bg-white md:shadow-sm p-5 md:border rounded-2xl mt-5 lg:h-[500px] flex justify-center items-center">
             <PieChart />
           </div>
         </div>
@@ -140,8 +161,14 @@ const Dashboard = () => {
             <h2 className="text-xl font-medium mt-5 md:mt-0">
               Weekly Activity
             </h2>
-            <div className="bg-white shadow-sm px-4 py-2 border rounded-3xl mt-5 h-[300px] w-full ">
-              <Carousel responsive={responsive} className="mt-10">
+            <div className="bg-white md:shadow-sm px-4 py-2 md:border rounded-3xl mt-5 h-[300px] w-full ">
+              <Carousel
+                className="mt-10 relative"
+                customLeftArrow={<CustomLeftArrow />}
+                customRightArrow={<CustomRightArrow />}
+                responsive={responsive}
+                // className="mt-10"
+              >
                 <QuickTransfer
                   url="https://i.pravatar.cc/50?u=1"
                   name="Livia Bator"
@@ -176,7 +203,12 @@ const Dashboard = () => {
                   <input
                     type="number"
                     value={amount}
-                    onChange={handleInputChange} // Set the input change handler
+                    onChange={handleInputChange}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        handleSubmit(); 
+                      }
+                    }}
                     className="block w-full rounded-full border border-neutral-300 bg-[#EDF1F7] text-[#718EBF] py-4 pl-6 pr-20 text-base/6 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none focus:text-black "
                   />
                   <div className="absolute inset-y-0.5 right-0 flex justify-end">
@@ -184,7 +216,7 @@ const Dashboard = () => {
                       <button
                         type="submit"
                         aria-label="Submit"
-                        onClick={handleSubmit} // Set the submit handler
+                        onClick={handleSubmit}
                         className="relative inline-block p-px font-semibold leading-6 text-white bg-[#232323] cursor-pointer rounded-full shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"
                       >
                         <span className="absolute inset-0 rounded-full p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
@@ -218,7 +250,7 @@ const Dashboard = () => {
         {/* Grid Column 2 */}
         <div className="col-span-7  md:w-full">
           <h2 className="text-xl font-medium mt-5 md:mt-0">Balance History</h2>
-          <div className="bg-white shadow-sm p-5 border rounded-3xl my-5 h-[300px]">
+          <div className="bg-white md:shadow-sm p-5 md:border rounded-3xl my-5 h-[300px]">
             <LineChart />
           </div>
         </div>
