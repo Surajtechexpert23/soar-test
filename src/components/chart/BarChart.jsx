@@ -69,7 +69,7 @@ const WeeklyActivityChart = () => {
         border: {
           display: false,
         },
-        categoryPercentage: 1, // Space between groups (categories)
+        categoryPercentage: 1, 
       },
       y: {
         beginAtZero: true,

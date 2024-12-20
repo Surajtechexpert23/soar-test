@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Pie } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  ArcElement,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+import React, { useEffect, useState } from "react";
+import { Pie } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
@@ -18,10 +13,10 @@ const PieChart = () => {
       setIsMobile(window.innerWidth <= 1280);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
   const[fetchdata,setFetchdata]=useState([])
@@ -36,8 +31,7 @@ const PieChart = () => {
     datasets: [
       {
         data: value,
-        backgroundColor: ['blue', 'gray', 'orange', 'black'],
-        borderColor: ['blue', 'gray', 'orange', 'black'],
+        backgroundColor: ["#FC7900", "#232323", "#396AFF", "#343C6A"],
         borderWidth: 1,
       },
     ],
@@ -50,23 +44,31 @@ const PieChart = () => {
         display: false,
       },
       datalabels: {
-        anchor: 'center',
-        align: 'center',
-        color: '#fff',
+        anchor: "center",
+        align: "center",
+        color: "#fff",
         font: {
-          weight: 'bold',
+          weight: "bold",
           size: 12,
         },
         formatter: (value) => {
-          if (value === 15 && isMobile) return '15% \nBill'; // Hide "Bill Expense" on non-mobile screens
-          return `${value === 20 ? "20% \nInvestment" : value === 30 ? "30% \nEntertainment" : value === 15 ? "15% \nBill\nExpense" : '35% \nOthers'}`;
+          if (value === 15 && isMobile) return "15% \nBill"; // Hide "Bill Expense" on non-mobile screens
+          return `${
+            value === 20
+              ? "20% \nInvestment"
+              : value === 30
+              ? "30% \nEntertainment"
+              : value === 15
+              ? "15% \nBill\nExpense"
+              : "35% \nOthers"
+          }`;
         },
       },
     },
     elements: {
       arc: {
         borderWidth: 2,
-        offset: isMobile ? 0 : 40, 
+        offset: isMobile ? 20 : 40,
       },
     },
   };

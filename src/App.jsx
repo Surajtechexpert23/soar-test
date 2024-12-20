@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 import SideBar from "@/components/sidebar/SideBar";
 import NavBar from "@/components/navbar/Navbar";
@@ -11,10 +16,7 @@ import { useSelector } from "react-redux";
 
 const App = () => {
   const profile = useSelector((state) => state);
-  // console.log("profile app",profile)
   const [isOpen, setIsOpen] = useState(false);
-  console.log({profile});
-
   const toggleSidebar = () => {
     setIsOpen((prev) => !prev);
   };
@@ -22,10 +24,14 @@ const App = () => {
   return (
     <Router>
       <div className="flex h-screen">
-        <SideBar isOpen={isOpen} onToggle={toggleSidebar}/>
-        <div className={`flex-1 transition-all duration-300 ${isOpen ? "ml-0" : "lg:ml-[15%]"}`}>
+        <SideBar isOpen={isOpen} onToggle={toggleSidebar} />
+        <div
+          className={`flex-1 transition-all duration-300 ${
+            isOpen ? "ml-0" : "lg:ml-[15%]"
+          }`}
+        >
           <NavBar onToggle={toggleSidebar} />
-          <main className="  overflow-y-auto bg-[#F5F7FA]"> {/* Adjust for navbar height */}
+          <main className="    h-[calc(100vh-100px)] overflow-y-auto bg-[#F5F7FA]">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />

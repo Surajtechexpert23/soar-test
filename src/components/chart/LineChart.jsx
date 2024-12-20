@@ -113,7 +113,6 @@ const LineChart = () => {
           usePointStyle: true,
         },
       },
- 
       datalabels: {
         display: false,
       },

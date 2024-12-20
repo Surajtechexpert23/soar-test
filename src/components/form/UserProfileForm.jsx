@@ -17,16 +17,13 @@ const UserProfileForm = () => {
   const [base64Image, setBase64Image] = useState(null);
   const dispatch=useDispatch()
   const onSubmit = (data) => {
-    // console.log(data, base64Image)
     const updateddata={
       ...data,
       image:base64Image
       
     }
-    // console.log(updateddata,"updateddata")
     dispatch(updateField(updateddata))
     toast.success("Profile updated successfully")
-    // console.log("data",updateddata)
     reset();
   };
   return (
@@ -66,7 +63,6 @@ const UserProfileForm = () => {
               </div>
             </div>
 
-            {/* <h2 className="font-bold mt-5 text-center">{formData?.name ? formData?.name : "Guest"}</h2> */}
           </div>
 
           {/* Form Columns */}
@@ -162,22 +158,7 @@ const UserProfileForm = () => {
             "
           >
             Save
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1em"
-              height="1em"
-              viewBox="0 0 24 24"
-              className="drop-shadow-[3px_5px_2px_#4f046a] hover:drop-shadow-[2px_2px_2px_#333] transition duration-700"
-            >
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4.698 4.034L21 12L4.698 19.966a.5.5 0 0 1-.546-.124a.56.56 0 0 1-.12-.568L6.5 12L4.032 4.726a.56.56 0 0 1 .12-.568a.5.5 0 0 1 .546-.124M6.5 12H21"
-              />
-            </svg> */}
+           
           </button>
         </div>
       </form>
