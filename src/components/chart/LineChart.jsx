@@ -28,7 +28,7 @@ ChartJS.register(
 const LineChart = () => {
     const[fetchdata,setFetchdata]=useState([])
     useEffect(()=>{
-      fetch("http://localhost:3008/balance").then((res)=>res.json()).then((data)=>setFetchdata(data))
+      fetch("http://localhost:2005/balance").then((res)=>res.json()).then((data)=>setFetchdata(data))
     },[])
     const months=fetchdata.map((items)=>items.month);
     const income=fetchdata.map((items)=>items.income);
