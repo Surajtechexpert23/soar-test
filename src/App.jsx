@@ -12,10 +12,11 @@ import NavBar from "@/components/navbar/Navbar";
 import Dashboard from "@/pages/Dashboard";
 import CreditCards from "@/pages/CreditCards";
 import Settings from "@/pages/Settings";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const profile = useSelector((state) => state);
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleSidebar = () => {
     setIsOpen((prev) => !prev);
   };
@@ -30,10 +31,7 @@ const App = () => {
           }`}
         >
           <NavBar onToggle={toggleSidebar} />
-          <main
-            className=" h-[calc(100vh-100px)] overflow-y-auto"
-            style={{ background: "rgba(245, 247, 250, 1) " }}
-          >
+          <main className="    h-[calc(100vh-100px)] overflow-y-auto bg-[#F5F7FA]">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -12,7 +12,8 @@ import {
   Filler,
 } from "chart.js";
 import { useRef } from "react";
-
+import { color } from "chart.js/helpers";
+ 
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -23,24 +24,33 @@ ChartJS.register(
   Legend,
   Filler
 );
-
+ 
 const LineChart = () => {
+    const[fetchdata,setFetchdata]=useState([])
+    useEffect(()=>{
+      fetch("http://localhost:2005/balance").then((res)=>res.json()).then((data)=>setFetchdata(data))
+    },[])
+    const months=fetchdata.map((items)=>items.month);
+    const income=fetchdata.map((items)=>items.income);
+
   const chartRef = useRef(null);
   const data = {
-    labels: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan"],
+    labels: months,
     datasets: [
       {
         label: "Balance History",
-        data: [150, 520, 350, 800, 200, 600, 700],
+        data: income,
         borderColor: "rgba(24, 20, 243, 1)",
         borderWidth: 3,
         pointRadius: 0,
         tension: 0.4,
+        // backgroundColor:
+        // "linear-gradient(180deg, rgba(45, 96, 255, 0.25) 0%, rgba(45, 96, 255, 0) 100%)",
         fill: true,
         backgroundColor: (context) => {
           const chart = context.chart;
           const { ctx, chartArea } = chart;
-
+ 
           if (!chartArea) {
             return null;
           }
@@ -57,7 +67,7 @@ const LineChart = () => {
       },
     ],
   };
-
+ 
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -103,18 +113,17 @@ const LineChart = () => {
           usePointStyle: true,
         },
       },
-
       datalabels: {
         display: false,
       },
     },
   };
-
+ 
   return (
     <div className="relative w-full h-72 md:h-full">
       <Line ref={chartRef} data={data} options={options} />
     </div>
   );
 };
-
+ 
 export default LineChart;

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-
-import { HiMenu, HiSearch, HiCog, HiBell } from "react-icons/hi";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import userImage from "../../assets/user.png";
+import notification from "../../assets/notification.png";
+import setting from "../../assets/settings.png";
+import { HiMenu, HiSearch } from "react-icons/hi";
+import { useSelector } from "react-redux";
 
 const NavBar = ({ onToggle }) => {
   const [currentLocation, setCurrentLocation] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-
+  const profile = useSelector((state) => state.profile);
   useEffect(() => {
     setCurrentLocation(location.pathname.replace("/", ""));
   }, [location.pathname]);
@@ -26,17 +29,9 @@ const NavBar = ({ onToggle }) => {
             : "Settings"}
         </h1>
         <div className="flex items-center ">
-          {/* <div className="relative hidden md:flex">
-            <HiSearch className="absolute left-5 top-6 text-gray-500 text-xl " />
-            <input
-              type="text"
-              placeholder="Search for something"
-              className="pr-2 py-3 m-2 rounded-full disable bg-gray-100 placeholder:text-gray-400 placeholder:pl-12 "
-            />
-          </div> */}
-          <label class="relative md:block hidden mr-4">
-            <span class="sr-only">Search</span>
-            <span class="absolute left-5 inset-y-0 flex items-center pl-2 text-gray-500 text-xl">
+          <label className="relative md:block hidden mr-4">
+            <span className="sr-only">Search</span>
+            <span className="absolute left-5 inset-y-0 flex items-center pl-2 text-gray-500 text-xl">
               <HiSearch fill="#8BA3CB" />
             </span>
             <input
@@ -47,32 +42,35 @@ const NavBar = ({ onToggle }) => {
             />
           </label>
           <div
-            className="bg-gray-100 rounded-full p-3 hidden md:flex"
+            className="bg-gray-100 rounded-full p-3  m-5 hidden md:flex"
             onClick={() => navigate("/settings")}
           >
-            <HiCog className="mx-4 text-gray-500 cursor-pointer text-3xl" />
+            <img
+              src={setting}
+              alt="avatar"
+              className="rounded-full  w-[25px] h-[25px] cursor-pointer"
+            />
+            {/* <HiCog className="mx-4 text-gray-500 cursor-pointer text-3xl" /> */}
           </div>
-          <div className="bg-gray-100 rounded-full p-3 ml-2 hidden md:flex">
-            <HiBell className="mx-4 text-gray-500 cursor-pointer text-3xl" />
+          <div className="bg-gray-100 rounded-full p-3 m-5 hidden md:flex">
+            <img
+              src={notification}
+              alt="avatar"
+              className="rounded-full  w-[20px] h-[25px] "
+            />
           </div>
-          <img
-            src={"https://i.pravatar.cc/50?u=5"}
-            alt="avatar"
-            className="rounded-full ml-2"
-          />
+          <div className="bg-gray-100 rounded-full ml-4 md:flex">
+            <img
+              src={userImage}
+              alt="avatar"
+              className="rounded-full w-[50px] lg:w-[70px]"
+            />
+          </div>
         </div>
       </div>
-      {/* <div className="relative flex md:hidden">
-        <HiSearch className="absolute left-5 top-6 text-gray-500 text-xl " />
-        <input
-          type="text"
-          placeholder="Search for something"
-          className="pr-2 py-3 m-2 w-full rounded-full disable bg-gray-100 placeholder:text-gray-400 placeholder:pl-12 "
-        />
-      </div> */}
-      <label class="relative block md:hidden">
-        <span class="sr-only">Search</span>
-        <span class="absolute left-5 inset-y-0 flex items-center pl-2 text-gray-500 text-xl">
+      <label className="relative block md:hidden">
+        <span className="sr-only">Search</span>
+        <span className="absolute left-5 inset-y-0 flex items-center pl-2 text-gray-500 text-xl">
           <HiSearch fill="#8BA3CB" />
         </span>
         <input

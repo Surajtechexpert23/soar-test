@@ -1,0 +1,147 @@
+{
+  "activity": [
+    {
+      "day": "Sun",
+      "withdraw": 250,
+      "deposit": 110
+    },
+    {
+      "day": "Mon",
+      "withdraw": 300,
+      "deposit": 400
+    },
+    {
+      "day": "Tue",
+      "withdraw": 450,
+      "deposit": 150
+    },
+    {
+      "day": "Wed",
+      "withdraw": 215,
+      "deposit": 315
+    },
+    {
+      "day": "Thu",
+      "withdraw": 320,
+      "deposit": 175
+    },
+    {
+      "day": "Fri",
+      "withdraw": 420,
+      "deposit": 300
+    },
+    {
+      "day": "Sat",
+      "withdraw": 300,
+      "deposit": 205
+    }
+  ],
+  "expense": [
+    { "name": "20% Investment", "value": "20%" },
+    { "name": "30% Entertainment", "value": "30%" },
+    { "name": "15% Bill Expense", "value": "15%" },
+    { "name": "35% Others", "value": "35%" }
+  ],
+  "balance": [
+    { "month": "Jul", "income": 150 },
+    { "month": "Aug", "income": 520 },
+    { "month": "Sep", "income": 350 },
+    { "month": "Oct", "income": 800 },
+    { "month": "Nov", "income": 200 },
+    { "month": "Dec", "income": 600 },
+    { "month": "Jan", "income": 700 }
+  ],
+  "cards": [
+    {
+      "balance": 5576,
+      "holder": "Eddy Cusuma",
+      "valid_date": "12/22",
+      "card_number": "3778**** ****1234"
+    },
+    {
+      "balance": 2570,
+      "holder": "John Cusuma",
+      "valid_date": "10/23",
+      "card_number": "3568**** ****1854"
+    },
+    {
+      "balance": 3050,
+      "holder": "Livia Bator",
+      "valid_date": "09/23",
+      "card_number": "2589**** ****8975"
+    },
+    {
+      "balance": 2000,
+      "holder": "John Roy",
+      "valid_date": "12/22",
+      "card_number": "3778**** ****1234"
+    },
+    {
+      "balance": 5576,
+      "holder": "Eddy Cusuma",
+      "valid_date": "12/22",
+      "card_number": "3878**** ****1234"
+    },
+    {
+      "balance": 2006,
+      "holder": "Randy Press",
+      "valid_date": "08/22",
+      "card_number": "7778**** ****1734"
+    },
+    {
+      "balance": 5576,
+      "holder": "Workman",
+      "valid_date": "07/23",
+      "card_number": "2007**** ****8734"
+    },
+    {
+      "balance": 8022,
+      "holder": "Jaan deny",
+      "valid_date": "12/22",
+      "card_number": "3778**** ****1234"
+    },
+    {
+      "balance": 4076,
+      "holder": "Eddy Cusuma",
+      "valid_date": "01/21",
+      "card_number": "1988**** ****9874"
+    }
+  ],
+  "transaction": [
+    {
+      "type": "card",
+      "label": "Deposite from my card",
+      "value": "850",
+      "amountType": "negative",
+      "date": "28 January 2021"
+    },
+    {
+      "type": "paypal",
+      "label": "Deposite paypal",
+      "value": "2500",
+      "amountType": "possitive",
+      "date": "25 January 2021"
+    },
+    {
+      "type": "cash",
+      "label": "Jemi Wilson",
+      "value": "5400",
+      "amountType": "possitive",
+      "date": "21 January 2021"
+    },
+    {
+      "type": "cash",
+      "label": "Randy Press",
+      "value": "525",
+      "amountType": "negative",
+      "date": "18 January 2021"
+    },
+    {
+      "type": "paypal",
+      "label": "Credit from Rohan",
+      "value": "3875",
+      "amountType": "possitive",
+      "date": "16 January 2021"
+    }
+  ]
+}

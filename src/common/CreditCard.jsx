@@ -9,6 +9,9 @@ const CreditCard = ({
   cardNumber,
   isBlack,
 }) => {
+  const formatCurrency = (amount) => {
+    return amount.toLocaleString("en-US");
+  };
   return (
     <div
       className={`rounded-3xl shadow-sm ${
@@ -24,7 +27,7 @@ const CreditCard = ({
         <div className="mt-2 flex justify-between items-center">
           <div className="flex flex-col">
             <p className={`text-sm ${!isBlack && "text-[#718EBF]"}`}>Balance</p>
-            <p className="text-lg">{balance}</p>
+            <p className="text-lg">${formatCurrency(balance)}</p>
           </div>
           <img
             src={isBlack ? simchip : simchipdark}

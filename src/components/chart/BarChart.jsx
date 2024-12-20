@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-
+ 
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -18,32 +18,40 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
+ 
 const WeeklyActivityChart = () => {
+  const[fetchdata,setFetchdata]=useState([])
+  useEffect(()=>{
+    fetch("http://localhost:2005/activity").then((res)=>res.json()).then((data)=>setFetchdata(data))
+  },[])
+  const labels = fetchdata.map((item) => item.day);
+  const depositData = fetchdata.map((item) => item.deposit);
+  const withdrawData = fetchdata.map((item) => item.withdraw);
   const data = {
-    labels: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"],
+    labels,
     datasets: [
       {
-        label: "Deposit",
-        data: [205, 110, 400, 150, 315, 175, 300],
-        backgroundColor: "rgba(57, 106, 255, 1)",
-        borderWidth: 1,
-        borderRadius: Number.MAX_VALUE,
-        borderSkipped: false,
-        barPercentage: 0.5,
-      },
-      {
         label: "Withdraw",
-        data: [300, 250, 300, 450, 215, 320, 420],
+        data: withdrawData,
         backgroundColor: "rgba(35, 35, 35, 1)",
         borderWidth: 1,
         borderRadius: Number.MAX_VALUE,
         borderSkipped: false,
         barPercentage: 0.5,
       },
+      {
+        label: "Deposit",
+        data: depositData,
+        backgroundColor: "rgba(57, 106, 255, 1)",
+        borderWidth: 1,
+        borderRadius: Number.MAX_VALUE,
+        borderSkipped: false,
+        barPercentage: 0.5,
+      },
+      
     ],
   };
-
+ 
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -106,7 +114,7 @@ const WeeklyActivityChart = () => {
       },
     },
   };
-
+ 
   return (
     <div className="relative w-full h-72 md:h-full">
       {" "}
@@ -115,5 +123,5 @@ const WeeklyActivityChart = () => {
     </div>
   );
 };
-
+ 
 export default WeeklyActivityChart;

@@ -1,12 +1,28 @@
 import React from "react";
+import CardIcon from "@/assets/Card.svg";
+import DollerIcon from "@/assets/DollerIcon.svg";
+import PaypalIcon from "@/assets/paypalpayment.svg";
 
-const TransactionItem = ({ icon, title, date, amount, amountType, iconbg }) => {
+const TransactionItem = ({ title, date, amount, amountType, type }) => {
+  const icons = {
+    card: CardIcon,
+    cash: DollerIcon,
+    paypal: PaypalIcon,
+  };
+  const iconback = {
+    card: "#FFF5D9",
+    cash: "#DCFAF8",
+    paypal: "#E7EDFF",
+  };
+  const transactionType = icons[type];
+  const iconBG = iconback[type];
+
   return (
     <div className="flex gap-1 items-center relative">
       <div
-        className={`flex justify-center items-center ${iconbg} w-14 h-14 rounded-full transition duration-600`}
+        className={`flex justify-center items-center bg-[${iconBG}] w-14 h-14 rounded-full transition duration-600`}
       >
-        <img src={icon.image} alt={icon.name} className={icon.className} />
+        <img src={transactionType} alt={type} className="text-3xl" />
       </div>
       <div className="flex flex-col ml-2 :ml-10">
         <p>{title}</p>

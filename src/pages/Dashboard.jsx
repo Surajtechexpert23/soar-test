@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -8,9 +8,6 @@ import TransactionItem from "@/common/TransactionItem";
 import ToastNotifications from "@/common/ToastNotifications";
 import QuickTransfer from "@/common/QuickTransfer";
 
-import CardIcon from "@/assets/Card.svg";
-import DollerIcon from "@/assets/DollerIcon.svg";
-import PaypalIcon from "@/assets/paypalpayment.svg";
 import BarChart from "@/components/chart/BarChart";
 import PieChart from "@/components/chart/PieChart";
 import LineChart from "@/components/chart/LineChart";
@@ -36,13 +33,26 @@ const Dashboard = () => {
       items: 2,
     },
   };
+  const [transactionData, setTransactionData] = useState([]);
+  const [cardData, setCardData] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:2005/transaction")
+      .then((res) => res.json())
+      .then((data) => setTransactionData(data));
+  }, []);
+  useEffect(() => {
+    fetch("http://localhost:2005/cards")
+      .then((res) => res.json())
+      .then((data) => setCardData(data));
+  }, []);
+
   const [amount, setAmount] = useState("525.50");
   const handleInputChange = (e) => {
     setAmount(e.target.value);
   };
 
   const handleSubmit = () => {
-    toast.success("Amount updated successfully!");
+    toast.success("Amount Transferred successfully!");
   };
   return (
     <>
@@ -63,20 +73,15 @@ const Dashboard = () => {
 
           <div className="mt-5">
             <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 gap-10">
-              <CreditCard
-                balance="$5,756"
-                cardHolder="Eddy Cusuma"
-                validThru="12/22"
-                cardNumber="3778 **** **** 1234"
-                isBlack={true}
-              />
-              <CreditCard
-                balance="$5,756"
-                cardHolder="Eddy Cusuma"
-                validThru="12/22"
-                cardNumber="3778 **** **** 1234"
-                isBlack={false}
-              />
+              {cardData.slice(0, 2).map((card, i) => (
+                <CreditCard
+                  balance={card.balance}
+                  cardHolder={card.holder}
+                  validThru={card.valid_date}
+                  cardNumber={card.card_number}
+                  isBlack={i % 2 === 0 ? true : false}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -90,66 +95,16 @@ const Dashboard = () => {
             className="rounded-3xl md:p-8 p-4 bg-white shadow-sm mt-5 space-y-10 md:space-y-5 border h-[271px] overflow-y-scroll"
             id="style-1"
           >
-            <TransactionItem
-              icon={{
-                image: CardIcon,
-                name: "card Image",
-                className: "text-3xl text-amber-400",
-              }}
-              title="Deposit from my Card"
-              date="28 January 2021"
-              amount="850"
-              amountType="negative"
-              iconbg={"bg-[#FFF5D9]"}
-            />
-            <TransactionItem
-              icon={{
-                image: PaypalIcon,
-                name: "Paypal Image",
-                className: "text-3xl text-amber-400",
-              }}
-              title="Deposit Paypal"
-              date="25 January 2021"
-              amount="2500"
-              amountType="positive"
-              iconbg={"bg-[#E7EDFF]"}
-            />
-            <TransactionItem
-              icon={{
-                image: DollerIcon,
-                name: "Doller Image",
-                className: "text-3xl text-amber-400",
-              }}
-              title="Jemi Wilson"
-              date="21 January 2021"
-              amount="5400"
-              amountType="positive"
-              iconbg={"bg-[#DCFAF8]"}
-            />
-            <TransactionItem
-              icon={{
-                image: DollerIcon,
-                name: "Doller Image",
-                className: "text-3xl text-amber-400",
-              }}
-              title="Jemi Wilson"
-              date="21 January 2021"
-              amount="5400"
-              amountType="positive"
-              iconbg={"bg-[#DCFAF8]"}
-            />
-            <TransactionItem
-              icon={{
-                image: DollerIcon,
-                name: "Doller Image",
-                className: "text-3xl text-amber-400",
-              }}
-              title="Jemi Wilson"
-              date="21 January 2021"
-              amount="5400"
-              amountType="positive"
-              iconbg={"bg-[#DCFAF8]"}
-            />
+            {transactionData.map((item, i) => (
+              <TransactionItem
+                key={`transaction_${i}`}
+                title={item.label}
+                date={item.date}
+                amount={item.value}
+                amountType={item.amountType}
+                type={item.type}
+              />
+            ))}
           </div>
         </div>
 
