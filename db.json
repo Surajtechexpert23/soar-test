@@ -1,0 +1,54 @@
+{
+  "activity": [
+    {
+      "day": "Sat",
+      "withdraw": 300,
+      "deposit": 205
+    },
+    {
+      "day": "Sun",
+      "withdraw": 250,
+      "deposit": 110
+    },
+    {
+      "day": "Mon",
+      "withdraw": 300,
+      "deposit": 400
+    },
+    {
+      "day": "Tue",
+      "withdraw": 450,
+      "deposit": 150
+    },
+    {
+      "day": "Wed",
+      "withdraw": 215,
+      "deposit": 315
+    },
+    {
+      "day": "Thu",
+      "withdraw": 320,
+      "deposit": 175
+    },
+    {
+      "day": "Fri",
+      "withdraw": 420,
+      "deposit": 300
+    }
+  ],
+  "Expense": [
+    { "name": "20% Investment", "value": "20%" },
+    { "name": "30% Entertainment", "value": "30%" },
+    { "name": "15% Bill Expense", "value": "15%" },
+    { "name": "35% Others", "value": "35%" }
+  ],
+  "balance": [
+    { "month": "Jul", "income": 150 },
+    { "month": "Aug", "income": 520 },
+    { "month": "Sep", "income": 350 },
+    { "month": "Oct", "income": 800 },
+    { "month": "Nov", "income": 200 },
+    { "month": "Dec", "income": 600 },
+    { "month": "Jan", "income": 700 }
+  ]
+}

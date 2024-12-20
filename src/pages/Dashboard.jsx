@@ -15,10 +15,10 @@ import BarChart from "@/components/chart/BarChart";
 import PieChart from "@/components/chart/PieChart";
 import LineChart from "@/components/chart/LineChart";
 
-import useToast from "@/hooks/useToast";
+// import useToast from "@/hooks/useToast";
 
 const Dashboard = () => {
-  const { showToast } = useToast();
+  // const { showToast } = useToast();
 
   const responsive = {
     superLargeDesktop: {
@@ -46,16 +46,16 @@ const Dashboard = () => {
   };
 
   const handleSubmit = () => {
-    const fetchData = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const success = true;
-        success
-          ? resolve("Data fetched successfully!")
-          : reject("Failed to fetch data.");
-      }, 2000);
-    });
+    // const fetchData = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     const success = true;
+    //     success
+    //       ? resolve("Data fetched successfully!")
+    //       : reject("Failed to fetch data.");
+    //   }, 2000);
+    // });
 
-    showToast(fetchData);
+    // showToast(fetchData);
   };
   return (
     <>
